@@ -24,6 +24,7 @@ export default function Note3(props) {
           width: "18rem",
           borderRadius: "10px",
           color: "rgba(0,0,0,0.702)",
+          backgroundColor: props.noteDetails.color,
         }}
       >
         <div className="Note3Title">
