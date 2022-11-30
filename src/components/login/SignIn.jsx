@@ -21,24 +21,29 @@ export default function SignIn() {
   };
 
   const validateInput = () => {
-    const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-    const userPasswordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
+    const emailRegex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    const userPasswordRegex =
+      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 
     let emailTest = emailRegex.test(inputModel.email);
     let userPasswordTest = userPasswordRegex.test(inputModel.userPassword);
 
     setInputModel({
-        ...inputModel,
-        emailValidation : emailTest ? false : true,
-        userPasswordValidation : userPasswordTest ? false : true
-    })
+      ...inputModel,
+      emailValidation: emailTest ? false : true,
+      userPasswordValidation: userPasswordTest ? false : true,
+    });
 
-    if(emailTest && userPasswordTest){
-        loginApi(inputModel).then((response) => {
+    if (emailTest && userPasswordTest) {
+      loginApi(inputModel)
+        .then((response) => {
           console.log(response);
-          localStorage.setItem('token',response.data.data)
+          localStorage.setItem("token", response.data.data);
         })
-        .catch((error) => {console.log(error)})
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -64,7 +69,9 @@ export default function SignIn() {
               fullWidth
               onChange={emailInput}
               error={inputModel.emailValidation}
-              helperText={inputModel.emailValidation ? "Enter a valid email address" : ''}
+              helperText={
+                inputModel.emailValidation ? "Enter a valid email address" : ""
+              }
             />
           </div>
           <div>
@@ -75,7 +82,11 @@ export default function SignIn() {
               fullWidth
               onChange={userPasswordInput}
               error={inputModel.userPasswordValidation}
-              helperText={inputModel.userPasswordValidation ? "Enter a valid userPassword" : ''}
+              helperText={
+                inputModel.userPasswordValidation
+                  ? "Enter a valid userPassword"
+                  : ""
+              }
             />
           </div>
           <div

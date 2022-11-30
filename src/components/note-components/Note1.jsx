@@ -1,5 +1,5 @@
-import React from 'react'
-import './NoteStyles.css'
+import React from "react";
+import "./NoteStyles.css";
 
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -9,10 +9,8 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
 
-
 export default function Note1(props) {
-
-  const updateToggle = () => props.toggle()
+  const updateToggle = () => props.toggle();
 
   return (
     <div className="Note1Container">
@@ -45,5 +43,5 @@ export default function Note1(props) {
         </IconButton>
       </Paper>
     </div>
-  )
+  );
 }
