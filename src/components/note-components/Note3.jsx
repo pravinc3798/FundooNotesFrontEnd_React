@@ -14,7 +14,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
 
-export default function Note3() {
+export default function Note3(props) {
   return (
     <div className="Note3Container">
       <Paper
@@ -30,6 +30,7 @@ export default function Note3() {
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             fullWidth
+            value={props.noteDetails.title}
           />
           <IconButton>
             <PushPinOutlinedIcon />
@@ -41,6 +42,7 @@ export default function Note3() {
             fullWidth
             multiline
             maxRows={14}
+            value={props.noteDetails.description}
           />
         </div>
         <div className="Note3Icons">

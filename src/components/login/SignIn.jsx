@@ -34,7 +34,10 @@ export default function SignIn() {
     })
 
     if(emailTest && userPasswordTest){
-        loginApi(inputModel).then((response) => {console.log(response)})
+        loginApi(inputModel).then((response) => {
+          console.log(response);
+          localStorage.setItem('token',response.data.data)
+        })
         .catch((error) => {console.log(error)})
     }
   };
