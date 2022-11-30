@@ -7,7 +7,57 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
 
 export default function SignUp() {
-    
+
+    const [userModel, setUserModel] = useState({
+        firstName : '',
+        lastName : '',
+        email : '',
+        userPassword : '',
+        confirmPassword : '',
+        firstNameValidation : false,
+        lastNameValidation : false,
+        emailValidation : false,
+        passwordValidation : false,
+        confirmPasswordCheck : false,
+        showPassword : false
+    })
+
+    const fieldUpdate = (field,value) => {
+        setUserModel({
+            ...userModel,
+            [field] : value
+        })
+    }
+
+    const showPassword = (event) => {
+        setUserModel({
+            ...userModel,
+            showPassword : event.target.checked
+        })
+    }
+
+    const validate = () => {
+        const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+        const userPasswordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
+        const nameRegex = /^[A-Z]{1,}[a-z]{2,}$/;
+
+        let firstNameTest = nameRegex.test(userModel.firstName)
+        let lastNameTest = nameRegex.test(userModel.lastName)
+        let emailTest = emailRegex.test(userModel.email)
+        let passwordTest = userPasswordRegex.test(userModel.userPassword)
+        let passwordCheck = (userModel.userPassword === userModel.confirmPassword)
+
+        setUserModel({
+            ...userModel,
+            firstNameValidation : firstNameTest ? false : true,
+            lastNameValidation : lastNameTest ? false : true,
+            emailValidation : emailTest ? false : true,
+            passwordValidation : passwordTest ? false : true,
+            confirmPasswordCheck : passwordCheck ? false : true
+        })
+    }
+
+
   return (
     <div className="SUmainBody">
       <div className="SUcontainer">
@@ -28,12 +78,18 @@ export default function SignUp() {
                 label="First Name"
                 variant="outlined"
                 size="small"
+                onChange={(event) => fieldUpdate('firstName',event.target.value)}
+                error={userModel.firstNameValidation}
+                helperText={userModel.firstNameValidation ? 'Invalid Name' : ''}
               />
               <TextField
                 className="SUtextField"
                 label="Last Name"
                 variant="outlined"
                 size="small"
+                onChange={(event) => fieldUpdate('lastName',event.target.value)}
+                error={userModel.lastNameValidation}
+                helperText={userModel.lastNameValidation ? 'Invalid Name' : ''}
               />
             </div>
             <div className="SUtextBox">
@@ -42,21 +98,32 @@ export default function SignUp() {
                 label="Email"
                 variant="outlined"
                 size="small"
+                onChange={(event) => fieldUpdate('email',event.target.value)}
+                error={userModel.emailValidation}
+                helperText={userModel.emailValidation ? 'Invalid email' : ''}
               />
             </div>
             <p>You can use letters, numbers & periods</p>
             <div className="SUtextBox">
               <TextField
+                type={userModel.showPassword ? 'text' : 'password'}
                 className="SUtextField"
                 label="Password"
                 variant="outlined"
                 size="small"
+                onChange={(event) => fieldUpdate('userPassword',event.target.value)}
+                error={userModel.passwordValidation}
+                helperText={userModel.passwordValidation ? 'Invalid password' : ''}
               />
               <TextField
+                type={userModel.showPassword ? 'text' : 'password'}
                 className="SUtextField"
                 label="Confirm"
                 variant="outlined"
                 size="small"
+                onChange={(event) => fieldUpdate('confirmPassword',event.target.value)}
+                error={userModel.confirmPasswordCheck}
+                helperText={userModel.confirmPasswordCheck ? 'Password does not match' : ''}
               />
             </div>
             <p>
@@ -65,7 +132,7 @@ export default function SignUp() {
             <div className="SUcheckBox">
               <FormControlLabel
                 className="SUcheckBoxMU"
-                control={<Checkbox />}
+                control={<Checkbox onChange={showPassword}/>}
                 label="Show Password"
               />
             </div>
@@ -73,8 +140,8 @@ export default function SignUp() {
               <Button className="SUsignInButton" variant="text">
                 Sign in instead
               </Button>
-              <Button className="SUnextButton" variant="contained">
-                Next
+              <Button className="SUnextButton" variant="contained" onClick={validate}>
+                Register
               </Button>
             </div>
           </div>
