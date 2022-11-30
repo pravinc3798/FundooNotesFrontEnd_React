@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './NoteStyles.css'
 
 import Paper from "@mui/material/Paper";
@@ -16,10 +16,26 @@ import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
+import { addNote } from "../../services/DataServices";
 
 export default function Note2(props) {
 
-  const updateToggle = () => props.toggle()
+  const [noteObj, setNoteObj] = useState({title:'', description:''})
+
+  const userInput = (field,value) => {
+    setNoteObj({
+      ...noteObj,
+      [field] : value
+    })
+  }
+
+  const updateToggle = () => {
+    props.toggle()
+
+    if(noteObj.title !== '' || noteObj.description !== ''){
+      addNote(noteObj).then(response => console.log(response)).catch(error => console.log(error))
+    }
+  }
 
   return (
     <div className="Note2Container">
@@ -39,6 +55,7 @@ export default function Note2(props) {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Title"
             fullWidth
+            onChange={(e) => userInput('title',e.target.value)}
           />
           <IconButton>
             <PushPinOutlinedIcon />
@@ -50,6 +67,7 @@ export default function Note2(props) {
             placeholder="Take a note..."
             fullWidth
             multiline
+            onChange={(e) => userInput('description',e.target.value)}
           />
         </div>
         <div className="Note2IconButtons">
