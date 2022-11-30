@@ -20,11 +20,9 @@ export default function AppBar() {
     <div className="ABcontainer">
       <div className="ABlogo">
         <IconButton>
-          <MenuOutlinedIcon/>
+          <MenuOutlinedIcon />
         </IconButton>
-        <img
-          src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
-        />
+        <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" />
         <p>Notes</p>
       </div>
       <div className="ABsearch">

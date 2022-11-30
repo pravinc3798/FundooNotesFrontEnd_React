@@ -1,0 +1,60 @@
+/* Note 1 Styles */
+
+.Note1Container {
+    width: 40.5rem;
+    padding: 1px 1px;
+    margin-left: 30rem;
+}
+
+/* Note 2 Styles */
+
+.Note2Container {
+    width: 40.5rem;
+    border-radius: 12px;
+    margin-left: 30rem;
+}
+
+.Note2Title{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+.Note2Description{
+    min-height: 3rem;
+}
+
+.Note2Icons {
+    display: flex;
+    gap : 1rem;
+}
+
+.Note2IconButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Note2Buttons {
+    margin-right: 2rem;
+}
+
+/* Note 3 Styles */
+
+.Note3Container {
+    position: relative;
+    left: 20rem;
+    margin: 2rem;
+}
+
+.Note3Title {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+.Note3Icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
