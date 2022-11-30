@@ -10,7 +10,10 @@ import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
 
 
-export default function Note1() {
+export default function Note1(props) {
+
+  const updateToggle = () => props.toggle()
+
   return (
     <div className="Note1Container">
       <Paper
@@ -29,6 +32,7 @@ export default function Note1() {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Take a note..."
+          onClick={updateToggle}
         />
         <IconButton>
           <CheckBoxOutlinedIcon />

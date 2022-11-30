@@ -17,7 +17,10 @@ import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
 
-export default function Note2() {
+export default function Note2(props) {
+
+  const updateToggle = () => props.toggle()
+
   return (
     <div className="Note2Container">
       <Paper
@@ -80,6 +83,7 @@ export default function Note2() {
             <Button
               variant="text"
               sx={{ color: "grey", textTransform: "none", fontWeight: "bold" }}
+              onClick={updateToggle}
             >
               Close
             </Button>
