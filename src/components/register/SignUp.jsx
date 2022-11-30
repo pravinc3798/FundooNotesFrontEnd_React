@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
+import { registerApi } from "../../services/UserServices";
 
 export default function SignUp() {
 
@@ -55,6 +56,11 @@ export default function SignUp() {
             passwordValidation : passwordTest ? false : true,
             confirmPasswordCheck : passwordCheck ? false : true
         })
+
+        if(firstNameTest && lastNameTest && emailTest && passwordTest && passwordCheck){
+            registerApi(userModel).then(response => console.log(response))
+                .catch(error => console.log(error))
+        }
     }
 
 
