@@ -24,6 +24,7 @@ export default function Note2(props) {
     title: "",
     description: "",
     color: "",
+    archive: false,
   });
 
   const userInput = (field, value) => {
@@ -104,7 +105,7 @@ export default function Note2(props) {
             <IconButton>
               <PhotoOutlinedIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => userInput('archive',!noteObj.archive)}>
               <ArchiveOutlinedIcon />
             </IconButton>
             <IconButton>
