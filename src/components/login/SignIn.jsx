@@ -3,6 +3,8 @@ import "./SignIn.css";
 import { loginApi } from "../../services/UserServices";
 
 import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function SignIn() {
   const [inputModel, setInputModel] = useState({
@@ -10,6 +12,7 @@ export default function SignIn() {
     userPassword: "",
     emailValidation: false,
     userPasswordValidation: false,
+    showPassword: false,
   });
 
   const emailInput = (e) => {
@@ -18,6 +21,13 @@ export default function SignIn() {
 
   const userPasswordInput = (e) => {
     setInputModel({ ...inputModel, userPassword: e.target.value });
+  };
+
+  const showPassword = (event) => {
+    setInputModel({
+      ...inputModel,
+      showPassword: event.target.checked,
+    });
   };
 
   const validateInput = () => {
@@ -76,7 +86,8 @@ export default function SignIn() {
           </div>
           <div>
             <TextField
-              label="userPassword"
+              type={inputModel.showPassword ? "text" : "password"}
+              label="Password"
               variant="outlined"
               size="small"
               fullWidth
@@ -87,6 +98,12 @@ export default function SignIn() {
                   ? "Enter a valid userPassword"
                   : ""
               }
+            />
+          </div>
+          <div>
+            <FormControlLabel
+              control={<Checkbox onChange={showPassword} />}
+              label="Show Password"
             />
           </div>
           <div
