@@ -14,7 +14,8 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
-import { archiveNote, trashNote } from "../../services/DataServices";
+import { archiveNote, changeColor, trashNote } from "../../services/DataServices";
+import ColorPopper from "../icon-components/ColorPopper";
 
 export default function Note3(props) {
 
@@ -22,8 +23,13 @@ export default function Note3(props) {
     archiveNote(id).then(response => console.log(response)).catch(error => console.log(error));
   }
 
-  const updateTrash = () => {
+  const updateTrash = (id) => {
     trashNote(id).then(response => console.log(response)).catch(error => console.log(error));
+  }
+
+  const updateColor = (selectedColor) => {
+    let noteObject = {noteId : props.noteDetails.noteID, colour : selectedColor}
+    changeColor(noteObject).then(response => console.log(response)).catch(error => console.log(error));
   }
 
   return (
@@ -65,7 +71,7 @@ export default function Note3(props) {
             <PersonAddAltOutlinedIcon />
           </IconButton>
           <IconButton>
-            <PaletteOutlinedIcon />
+            <ColorPopper noteColor={updateColor} />
           </IconButton>
           <IconButton>
             <PhotoOutlinedIcon />

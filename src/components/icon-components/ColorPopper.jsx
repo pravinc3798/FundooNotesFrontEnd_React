@@ -8,18 +8,17 @@ export default function ColorPopper(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const colors = [
-    "#2ECC71",
-    "#AF7AC5",
-    "#F1948A",
-    "#A3E4D7",
-    "#F5B7B1",
-    "#F5B041",
-    "#DC7633",
-    "#F1C40F",
-    "#AAB7B8",
-    "#F1948A",
-    "#2ECC71",
-    "#F5B041",
+    "rgb(46, 204, 113)",
+    "rgb(175, 122, 197)",
+    "rgb(241, 148, 138)",
+    "rgb(163, 228, 215)",
+    "rgb(245, 183, 177)",
+    "rgb(245, 176, 65)",
+    "rgb(220, 118, 51)",
+    "rgb(241, 196, 15)",
+    "rgb(170, 183, 184)",
+    "rgb(241, 148, 138)",
+    "rgb(46, 204, 113)",
   ];
 
   const handleClick = (event) => {

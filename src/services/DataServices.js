@@ -25,3 +25,8 @@ export const trashNote = (noteId) => {
     let response = axios.put(`http://localhost:19192/api/Note/Trash?noteId=${noteId}`,noteId,headerConfig)
     return response;
 }
+
+export const changeColor = (noteObj) => {
+    let response = axios.put(`http://localhost:19192/api/Note/Color?noteId=${noteObj.noteId}&colour=${noteObj.colour}`,noteObj,headerConfig)
+    return response;
+}
