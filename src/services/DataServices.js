@@ -15,3 +15,8 @@ export const addNote = (noteModel) => {
     let response = axios.post('http://localhost:19192/api/Note/Add',noteModel,headerConfig)
     return response;
 }
+
+export const archiveNote = (noteId) => {
+    let response = axios.put(`http://localhost:19192/api/Note/Archive?noteId=${noteId}`,noteId,headerConfig)
+    return response;
+}

@@ -13,8 +13,14 @@ import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
+import { archiveNote } from "../../services/DataServices";
 
 export default function Note3(props) {
+
+  const updateArchive = (id) => {
+    archiveNote(id).then(response => console.log(response)).catch(error => console.log(error));
+  }
+
   return (
     <div className="Note3Container">
       <Paper
@@ -59,7 +65,7 @@ export default function Note3(props) {
           <IconButton>
             <PhotoOutlinedIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => updateArchive(props.noteDetails.noteID)}>
             <ArchiveOutlinedIcon />
           </IconButton>
           <IconButton>
