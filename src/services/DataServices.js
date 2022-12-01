@@ -20,3 +20,8 @@ export const archiveNote = (noteId) => {
     let response = axios.put(`http://localhost:19192/api/Note/Archive?noteId=${noteId}`,noteId,headerConfig)
     return response;
 }
+
+export const trashNote = (noteId) => {
+    let response = axios.put(`http://localhost:19192/api/Note/Trash?noteId=${noteId}`,noteId,headerConfig)
+    return response;
+}

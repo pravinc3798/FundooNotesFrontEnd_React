@@ -5,20 +5,25 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 
-import NotificationAddOutlinedIcon from "@mui/icons-material/NotificationAddOutlined";
+//import NotificationAddOutlinedIcon from "@mui/icons-material/NotificationAddOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
-import { archiveNote } from "../../services/DataServices";
+import { archiveNote, trashNote } from "../../services/DataServices";
 
 export default function Note3(props) {
 
   const updateArchive = (id) => {
     archiveNote(id).then(response => console.log(response)).catch(error => console.log(error));
+  }
+
+  const updateTrash = () => {
+    trashNote(id).then(response => console.log(response)).catch(error => console.log(error));
   }
 
   return (
@@ -53,9 +58,9 @@ export default function Note3(props) {
           />
         </div>
         <div className="Note3Icons">
-          <IconButton>
+          {/* <IconButton>
             <NotificationAddOutlinedIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton>
             <PersonAddAltOutlinedIcon />
           </IconButton>
@@ -67,6 +72,9 @@ export default function Note3(props) {
           </IconButton>
           <IconButton onClick={() => updateArchive(props.noteDetails.noteID)}>
             <ArchiveOutlinedIcon />
+          </IconButton>
+          <IconButton onClick={() => updateTrash(props.noteDetails.noteID)}>
+            <DeleteOutlineOutlinedIcon/>
           </IconButton>
           <IconButton>
             <MoreVertOutlinedIcon />
