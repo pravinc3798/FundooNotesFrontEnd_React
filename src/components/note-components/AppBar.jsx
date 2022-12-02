@@ -15,11 +15,11 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export default function AppBar() {
+export default function AppBar(props) {
   return (
     <div className="ABcontainer">
       <div className="ABlogo">
-        <IconButton>
+        <IconButton onClick={props.updateDrawer}>
           <MenuOutlinedIcon />
         </IconButton>
         <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" />

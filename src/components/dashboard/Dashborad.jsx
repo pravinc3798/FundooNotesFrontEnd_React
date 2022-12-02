@@ -4,12 +4,15 @@ import AppBar from "../note-components/AppBar";
 import Note1 from "../note-components/Note1";
 import Note2 from "../note-components/Note2";
 import Note3 from "../note-components/Note3";
+import MiniDrawer from "../mini-drawer/MiniDrawer";
 
 export default function Dashborad() {
   const [toggle, setToggle] = useState(false);
   const [noteList, setNoteList] = useState([]);
+  const [drawerSwitch, setDrawerSwitch] = useState(false);
 
   const updateToggle = () => setToggle(!toggle);
+  const updateDrawer = () => setDrawerSwitch(!drawerSwitch);
 
   useEffect(() => {
     getNotes()
@@ -23,7 +26,8 @@ export default function Dashborad() {
 
   return (
     <div>
-      <AppBar />
+      <AppBar updateDrawer={updateDrawer}/>
+      <MiniDrawer drawerPosition={drawerSwitch}/>
       {toggle ? (
         <Note2 toggle={updateToggle} />
       ) : (
