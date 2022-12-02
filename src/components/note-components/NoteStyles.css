@@ -1,6 +1,6 @@
 /* Note 1 Styles */
-
 .Note1Container {
+    margin-top: 3rem;
     width: 40.5rem;
     padding: 1px 1px;
     margin-left: 30rem;
@@ -9,6 +9,7 @@
 /* Note 2 Styles */
 
 .Note2Container {
+    margin-top: 3rem;
     width: 40.5rem;
     border-radius: 12px;
     margin-left: 30rem;

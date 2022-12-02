@@ -98,9 +98,7 @@ export default function Note2(props) {
               <PaletteOutlinedIcon />
             </IconButton> */}
 
-            <IconButton>
-              <ColorPopper noteColor={noteColor} />
-            </IconButton>
+            <ColorPopper noteColor={noteColor} />
 
             <IconButton>
               <PhotoOutlinedIcon />

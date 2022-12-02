@@ -54,13 +54,14 @@ export default function Note3(props) {
             <PushPinOutlinedIcon />
           </IconButton>
         </div>
-        <div className="Note3Description">
+        <div className="Note3Description" style={{height:'6rem',resize:'none',overflow:'hidden'}}>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{ ml: 1, flex: 1,p: "2px 4px"}}
             fullWidth
             multiline
-            maxRows={14}
+            rows={5}
             value={props.noteDetails.description}
+            inputProps={{style:{overflowY:'hidden'}}}
           />
         </div>
         <div className="Note3Icons">
@@ -70,9 +71,9 @@ export default function Note3(props) {
           <IconButton>
             <PersonAddAltOutlinedIcon />
           </IconButton>
-          <IconButton>
-            <ColorPopper noteColor={updateColor} />
-          </IconButton>
+          
+          <ColorPopper noteColor={updateColor} />
+          
           <IconButton>
             <PhotoOutlinedIcon />
           </IconButton>

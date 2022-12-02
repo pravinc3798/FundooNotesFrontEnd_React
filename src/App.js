@@ -4,9 +4,9 @@ import SignUp from "./components/register/SignUp";
 
 function App() {
   return (
-     <SignIn/>
+    // <SignIn/>
     // <SignUp/>
-    // <Dashborad/>
+     <Dashborad/>
   );
 }
 
