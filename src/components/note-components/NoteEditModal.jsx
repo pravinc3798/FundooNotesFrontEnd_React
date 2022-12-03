@@ -86,7 +86,7 @@ export default function NoteEditModal(props) {
           </div>
           <div className="Note3Description">
             <InputBase
-              sx={{ ml: 1, flex: 1, p: "2px 4px", marginBottom: "1rem" }}
+              sx={{ ml: 1, flex: 1, p: "2px 4px", marginBottom: "0rem" }}
               fullWidth
               multiline
               defaultValue={props.pnoteDetails.description}
@@ -95,6 +95,7 @@ export default function NoteEditModal(props) {
               }}
             />
           </div>
+          <p style={{textAlign:'right', fontSize:'0.8rem', color:'black'}}>Edited {new Date(props.pnoteDetails.edited).toLocaleString()}</p>
           <div className="Note3Icons">
             <IconButton>
               <PersonAddAltOutlinedIcon />
