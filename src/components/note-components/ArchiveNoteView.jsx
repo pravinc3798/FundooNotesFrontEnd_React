@@ -12,7 +12,11 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
-import { addColor, archiveNote, trashNote } from "../../services/DataServices";
+import {
+  changeColor,
+  archiveNote,
+  trashNote,
+} from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
 
 export default function ArchiveNoteView(props) {
@@ -30,7 +34,7 @@ export default function ArchiveNoteView(props) {
 
   const updateColor = (selectedColor) => {
     let someObj = { noteId: props.noteDetails.noteID, colour: selectedColor };
-    addColor(someObj)
+    changeColor(someObj)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };

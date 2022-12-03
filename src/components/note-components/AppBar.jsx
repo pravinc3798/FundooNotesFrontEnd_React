@@ -23,7 +23,7 @@ export default function AppBar(props) {
           <MenuOutlinedIcon />
         </IconButton>
         <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" />
-        <p>Notes</p>
+        <p>{props.heading}</p>
       </div>
       <div className="ABsearch">
         <Paper

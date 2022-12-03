@@ -20,7 +20,7 @@ const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   border: 0,
-  marginTop:65,
+  marginTop: 65,
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -31,7 +31,7 @@ const openedMixin = (theme) => ({
 
 const closedMixin = (theme) => ({
   border: 0,
-  marginTop:65,
+  marginTop: 65,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -63,8 +63,12 @@ export default function MiniDrawer(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const selectPane = (selectedOption) => {
+    props.paneSelection(selectedOption);
+  };
+
   return (
-    <Box sx={{ display: "flex"}}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Drawer variant="permanent" open={props.drawerPosition}>
         <List>
@@ -75,7 +79,12 @@ export default function MiniDrawer(props) {
             { name: "Archive", icon: <ArchiveOutlinedIcon /> },
             { name: "Bin", icon: <DeleteOutlineOutlinedIcon /> },
           ].map((item, index) => (
-            <ListItem key={index} disablePadding sx={{ display: "block", marginLeft:'1.65rem' }}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{ display: "block", marginLeft: "1.65rem" }}
+              onClick={() => selectPane(item.name)}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
