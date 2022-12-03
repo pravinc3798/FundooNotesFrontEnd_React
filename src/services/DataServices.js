@@ -30,3 +30,8 @@ export const changeColor = (noteObj) => {
     let response = axios.put(`http://localhost:19192/api/Note/Color?noteId=${noteObj.noteId}&colour=${noteObj.colour}`,noteObj,headerConfig)
     return response;
 }
+
+export const deleteNote = (noteId) => {
+    let response = axios.delete(`http://localhost:19192/api/Note/Delete?noteId=${noteId}`,headerConfig)
+    return response;
+}
