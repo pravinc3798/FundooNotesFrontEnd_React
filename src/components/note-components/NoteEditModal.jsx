@@ -55,7 +55,7 @@ export default function NoteEditModal(props) {
   };
 
   const updateColor = (selectedColor) => {
-    let someObj = { noteId: props.noteDetails.noteID, colour: selectedColor };
+    let someObj = { noteId: props.pnoteDetails.noteID, colour: selectedColor };
     changeColor(someObj)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
@@ -100,7 +100,7 @@ export default function NoteEditModal(props) {
             <IconButton>
               <PersonAddAltOutlinedIcon />
             </IconButton>
-            <ColorPopper noteColor={updateColor} />
+            <ColorPopper noteColor={updateColor}/>
             <IconButton>
               <PhotoOutlinedIcon />
             </IconButton>
