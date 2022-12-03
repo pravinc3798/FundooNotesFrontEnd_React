@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NoteStyles.css";
 
 import Paper from "@mui/material/Paper";
@@ -18,8 +18,12 @@ import {
   trashNote,
 } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
+import NoteEditModal from "./NoteEditModal";
 
 export default function ArchiveNoteView(props) {
+
+  const [openClose, setOpenClose] = useState(false);
+
   const updateArchive = (id) => {
     archiveNote(id)
       .then((response) => console.log(response))
@@ -41,6 +45,13 @@ export default function ArchiveNoteView(props) {
 
   return (
     <div className="Note3Container">
+      {openClose && (
+        <NoteEditModal
+          openModal={openClose}
+          closeModal={() => setOpenClose(false)}
+          pnoteDetails={props.noteDetails}
+        />
+      )}
       <Paper
         component="div"
         sx={{
@@ -56,6 +67,7 @@ export default function ArchiveNoteView(props) {
             sx={{ ml: 1, flex: 1 }}
             fullWidth
             value={props.noteDetails.title}
+            onClick={() => setOpenClose(true)}
           />
           <IconButton>
             <PushPinOutlinedIcon />
@@ -72,6 +84,7 @@ export default function ArchiveNoteView(props) {
             rows={5}
             value={props.noteDetails.description}
             inputProps={{ style: { overflowY: "hidden" } }}
+            onClick={() => setOpenClose(true)}
           />
         </div>
         <div className="Note3Icons">

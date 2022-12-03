@@ -24,7 +24,7 @@ export default function Dashborad() {
     getNotes()
       .then((response) => {
         console.log(response);
-        //setNoteList(response.data.data);
+        setNoteList(response.data.data);
         console.log(noteList);
       })
       .catch((error) => console.log(error));
