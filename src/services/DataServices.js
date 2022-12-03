@@ -35,3 +35,8 @@ export const deleteNote = (noteId) => {
     let response = axios.delete(`http://localhost:19192/api/Note/Delete?noteId=${noteId}`,headerConfig)
     return response;
 }
+
+export const editNote = (noteId,noteObj) => {
+    let response = axios.put(`http://localhost:19192/api/Note/Edit?noteId=${noteId}`,noteObj,headerConfig)
+    return response;
+}
