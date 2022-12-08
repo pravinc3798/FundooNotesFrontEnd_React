@@ -1,42 +1,68 @@
 import axios from "axios";
 
 const headerConfig = {
-    headers : {
-        Authorization : `Bearer ${localStorage.getItem('token')}`
-    }
-}
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+};
 
 export const getNotes = () => {
-    let response = axios.get('http://localhost:19192/api/Note/View',headerConfig)
-    return response;
-}
+  let response = axios.get(
+    "http://localhost:19192/api/Note/View",
+    headerConfig
+  );
+  return response;
+};
 
 export const addNote = (noteModel) => {
-    let response = axios.post('http://localhost:19192/api/Note/Add',noteModel,headerConfig)
-    return response;
-}
+  let response = axios.post(
+    "http://localhost:19192/api/Note/Add",
+    noteModel,
+    headerConfig
+  );
+  return response;
+};
 
 export const archiveNote = (noteId) => {
-    let response = axios.put(`http://localhost:19192/api/Note/Archive?noteId=${noteId}`,noteId,headerConfig)
-    return response;
-}
+  let response = axios.put(
+    `http://localhost:19192/api/Note/Archive?noteId=${noteId}`,
+    noteId,
+    headerConfig
+  );
+  return response;
+};
 
 export const trashNote = (noteId) => {
-    let response = axios.put(`http://localhost:19192/api/Note/Trash?noteId=${noteId}`,noteId,headerConfig)
-    return response;
-}
+  let response = axios.put(
+    `http://localhost:19192/api/Note/Trash?noteId=${noteId}`,
+    noteId,
+    headerConfig
+  );
+  return response;
+};
 
 export const changeColor = (noteObj) => {
-    let response = axios.put(`http://localhost:19192/api/Note/Color?noteId=${noteObj.noteId}&colour=${noteObj.colour}`,noteObj,headerConfig)
-    return response;
-}
+  let response = axios.put(
+    `http://localhost:19192/api/Note/Color?noteId=${noteObj.noteId}&colour=${noteObj.colour}`,
+    noteObj,
+    headerConfig
+  );
+  return response;
+};
 
 export const deleteNote = (noteId) => {
-    let response = axios.delete(`http://localhost:19192/api/Note/Delete?noteId=${noteId}`,headerConfig)
-    return response;
-}
+  let response = axios.delete(
+    `http://localhost:19192/api/Note/Delete?noteId=${noteId}`,
+    headerConfig
+  );
+  return response;
+};
 
-export const editNote = (noteId,noteObj) => {
-    let response = axios.put(`http://localhost:19192/api/Note/Edit?noteId=${noteId}`,noteObj,headerConfig)
-    return response;
-}
+export const editNote = (noteId, noteObj) => {
+  let response = axios.put(
+    `http://localhost:19192/api/Note/Edit?noteId=${noteId}`,
+    noteObj,
+    headerConfig
+  );
+  return response;
+};

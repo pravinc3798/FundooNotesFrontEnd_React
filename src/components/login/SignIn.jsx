@@ -8,8 +8,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { useNavigate } from "react-router";
 
 export default function SignIn() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [inputModel, setInputModel] = useState({
     email: "",
@@ -54,7 +53,7 @@ export default function SignIn() {
         .then((response) => {
           console.log(response);
           localStorage.setItem("token", response.data.data);
-          navigate("/dashboard")
+          navigate("/dashboard");
         })
         .catch((error) => {
           console.log(error);

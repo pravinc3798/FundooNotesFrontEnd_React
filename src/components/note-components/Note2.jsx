@@ -22,7 +22,6 @@ import { addNote } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
 
 export default function Note2(props) {
-
   const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
   const dispatch = useDispatch();
 
@@ -110,7 +109,7 @@ export default function Note2(props) {
             <IconButton>
               <PhotoOutlinedIcon />
             </IconButton>
-            <IconButton onClick={() => userInput('archive',!noteObj.archive)}>
+            <IconButton onClick={() => userInput("archive", !noteObj.archive)}>
               <ArchiveOutlinedIcon />
             </IconButton>
             <IconButton>
@@ -127,8 +126,9 @@ export default function Note2(props) {
             <Button
               variant="text"
               sx={{ color: "grey", textTransform: "none", fontWeight: "bold" }}
-              onClick={() => {dispatch(NewNoteToggle())
-                saveNote()
+              onClick={() => {
+                dispatch(NewNoteToggle());
+                saveNote();
               }}
             >
               Close

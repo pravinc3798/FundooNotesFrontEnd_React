@@ -27,8 +27,7 @@ import { useDispatch } from "react-redux";
 import { ApiSensor } from "../../redux/Actions";
 
 export default function NoteEditModal(props) {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const styleModal = {
     position: "absolute",
@@ -50,14 +49,14 @@ export default function NoteEditModal(props) {
     archiveNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-      dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   const updateTrash = (id) => {
     trashNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-      dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   const updateColor = (selectedColor) => {
@@ -71,7 +70,7 @@ export default function NoteEditModal(props) {
     editNote(id, noteObject)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-      dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   return (
@@ -102,12 +101,14 @@ export default function NoteEditModal(props) {
               }}
             />
           </div>
-          <p style={{textAlign:'right', fontSize:'0.8rem', color:'black'}}>Edited {new Date(props.pnoteDetails.edited).toLocaleString()}</p>
+          <p style={{ textAlign: "right", fontSize: "0.8rem", color: "black" }}>
+            Edited {new Date(props.pnoteDetails.edited).toLocaleString()}
+          </p>
           <div className="Note3Icons">
             <IconButton>
               <PersonAddAltOutlinedIcon />
             </IconButton>
-            <ColorPopper noteColor={updateColor}/>
+            <ColorPopper noteColor={updateColor} />
             <IconButton>
               <PhotoOutlinedIcon />
             </IconButton>

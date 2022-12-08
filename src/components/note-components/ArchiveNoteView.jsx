@@ -23,7 +23,7 @@ import { ApiSensor } from "../../redux/Actions";
 import { useDispatch } from "react-redux";
 
 export default function ArchiveNoteView(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [openClose, setOpenClose] = useState(false);
 
@@ -31,14 +31,14 @@ export default function ArchiveNoteView(props) {
     archiveNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-      dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   const updateTrash = (id) => {
     trashNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-      dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   const updateColor = (selectedColor) => {

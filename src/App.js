@@ -5,7 +5,7 @@ import PageRouter from "./routing/Router";
 function App() {
   return (
     <Provider store={store}>
-      <PageRouter/>
+      <PageRouter />
     </Provider>
   );
 }

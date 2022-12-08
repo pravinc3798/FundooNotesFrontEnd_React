@@ -63,7 +63,6 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer(props) {
-
   const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
   const dispatch = useDispatch();
 

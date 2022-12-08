@@ -14,7 +14,7 @@ export default function Dashborad() {
     (state) => state.NewNoteTogglePosition
   );
   const MiniDrawerPane = useSelector((state) => state.MiniDrawerPane);
-  const ApiCallSense = useSelector(state => state.ApiCallSense)
+  const ApiCallSense = useSelector((state) => state.ApiCallSense);
 
   const [noteList, setNoteList] = useState([]);
 
@@ -26,7 +26,7 @@ export default function Dashborad() {
         console.log(noteList);
       })
       .catch((error) => console.log(error));
-  }, [MiniDrawerPane,ApiCallSense]);
+  }, [MiniDrawerPane, ApiCallSense]);
 
   return (
     <div>

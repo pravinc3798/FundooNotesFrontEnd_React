@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { ApiSensor } from "../../redux/Actions";
 
 export default function ColorPopper(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const colors = [
@@ -18,11 +18,11 @@ export default function ColorPopper(props) {
     "rgb(245, 183, 177)",
     "rgb(245, 176, 65)",
     "rgb(170, 183, 184)",
-    'rgb(255, 153, 204)',
-    'rgb(255, 255, 153)',
-    'rgb(204, 255, 204)',
-    'rgb(204, 255, 255)',
-    'rgb(255, 204, 229)',
+    "rgb(255, 153, 204)",
+    "rgb(255, 255, 153)",
+    "rgb(204, 255, 204)",
+    "rgb(204, 255, 255)",
+    "rgb(255, 204, 229)",
   ];
 
   const handleClick = (event) => {
@@ -31,7 +31,7 @@ export default function ColorPopper(props) {
 
   const selectColor = (optedColor) => {
     props.noteColor(optedColor);
-    dispatch(ApiSensor())
+    dispatch(ApiSensor());
   };
 
   const open = Boolean(anchorEl);
@@ -42,7 +42,7 @@ export default function ColorPopper(props) {
       <IconButton onClick={handleClick}>
         <PaletteOutlinedIcon />
       </IconButton>
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{zIndex:1400}}>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 1400 }}>
         <Box
           sx={{
             p: 1,
