@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./NoteStyles.css";
+import { useStyle } from "../Styling";
 
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -19,11 +19,16 @@ import {
 } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
 import NoteEditModal from "../note-components/NoteEditModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ApiSensor } from "../../redux/Actions";
+import { Box } from "@mui/system";
 
 export default function Note3(props) {
+  const classes = useStyle();
   const dispatch = useDispatch();
+  const MiniDrawerPane = useSelector((state) => state.MiniDrawerPane);
+  const leftCustom = !MiniDrawerPane ? "16vw" : "8vw";
+
   const [openClose, setOpenClose] = useState(false);
 
   const updateArchive = (id) => {
@@ -51,7 +56,7 @@ export default function Note3(props) {
   };
 
   return (
-    <div className="Note3Container">
+    <Box className={classes.Note3Container} style={{ left: leftCustom }}>
       {openClose && (
         <NoteEditModal
           openModal={openClose}
@@ -60,61 +65,55 @@ export default function Note3(props) {
         />
       )}
       <Paper
+        className={classes.Note3Paper}
+        sx={{ bgcolor: props.noteDetails.color }}
         component="div"
-        sx={{
-          p: "2px 4px",
-          width: "18rem",
-          borderRadius: "10px",
-          color: "rgba(0,0,0,0.702)",
-          backgroundColor: props.noteDetails.color,
-        }}
       >
-        <div className="Note3Title">
+        <Box className={classes.Note3Title}>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{ ml: 1, flex: 1}}
             fullWidth
             value={props.noteDetails.title}
             onClick={() => setOpenClose(true)}
           />
-          <IconButton>
-            <PushPinOutlinedIcon />
+          <IconButton size="small">
+            <PushPinOutlinedIcon fontSize="small" />
           </IconButton>
-        </div>
-        <div
-          className="Note3Description"
-          style={{ height: "6rem", resize: "none", overflow: "hidden" }}
+        </Box>
+        <Box
+          className={classes.Note3Description}
           onClick={() => setOpenClose(true)}
         >
           <InputBase
-            sx={{ ml: 1, flex: 1, p: "2px 4px" }}
+            sx={{ ml: 1, mr:1,flex: 1, p: "2px 4px" }}
             fullWidth
             multiline
             rows={5}
             value={props.noteDetails.description}
             inputProps={{ style: { overflowY: "hidden" } }}
           />
-        </div>
-        <div className="Note3Icons">
-          <IconButton>
-            <PersonAddAltOutlinedIcon />
+        </Box>
+        <Box className={classes.Note3Icons}>
+          <IconButton size="small">
+            <PersonAddAltOutlinedIcon fontSize="small" />
           </IconButton>
 
           <ColorPopper noteColor={updateColor} />
 
-          <IconButton>
-            <PhotoOutlinedIcon />
+          <IconButton size="small">
+            <PhotoOutlinedIcon fontSize="small" />
           </IconButton>
           <IconButton onClick={() => updateArchive(props.noteDetails.noteID)}>
-            <ArchiveOutlinedIcon />
+            <ArchiveOutlinedIcon fontSize="small" />
           </IconButton>
           <IconButton onClick={() => updateTrash(props.noteDetails.noteID)}>
-            <DeleteOutlineOutlinedIcon />
+            <DeleteOutlineOutlinedIcon fontSize="small" />
           </IconButton>
-          <IconButton>
-            <MoreVertOutlinedIcon />
+          <IconButton size="small">
+            <MoreVertOutlinedIcon fontSize="small" />
           </IconButton>
-        </div>
+        </Box>
       </Paper>
-    </div>
+    </Box>
   );
 }

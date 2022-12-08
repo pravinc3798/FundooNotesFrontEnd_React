@@ -1,5 +1,5 @@
 import React from "react";
-import "./NoteStyles.css";
+import { useStyle } from "../Styling";
 
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -10,10 +10,13 @@ import RestoreFromTrashOutlinedIcon from "@mui/icons-material/RestoreFromTrashOu
 
 import { trashNote, deleteNote } from "../../services/DataServices";
 import { ApiSensor } from "../../redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Note5(props) {
   const dispatch = useDispatch();
+  const classes = useStyle();
+  const MiniDrawerPane = useSelector((state) => state.MiniDrawerPane);
+  const leftCustom = !MiniDrawerPane ? "16vw" : "8vw";
 
   const updateTrash = (id) => {
     trashNote(id)
@@ -30,18 +33,13 @@ export default function Note5(props) {
   };
 
   return (
-    <div className="Note3Container">
+    <div className={classes.Note3Container} style={{ left: leftCustom }}>
       <Paper
+        className={classes.Note3Paper}
+        sx={{ bgcolor: props.noteDetails.color }}
         component="div"
-        sx={{
-          p: "2px 4px",
-          width: "18rem",
-          borderRadius: "10px",
-          color: "rgba(0,0,0,0.702)",
-          backgroundColor: props.noteDetails.color,
-        }}
       >
-        <div className="Note3Title">
+        <div className={classes.Note3Title}>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             fullWidth
@@ -49,8 +47,7 @@ export default function Note5(props) {
           />
         </div>
         <div
-          className="Note3Description"
-          style={{ height: "6rem", resize: "none", overflow: "hidden" }}
+          className={classes.Note3Description}
         >
           <InputBase
             sx={{ ml: 1, flex: 1, p: "2px 4px" }}
@@ -61,12 +58,12 @@ export default function Note5(props) {
             inputProps={{ style: { overflowY: "hidden" } }}
           />
         </div>
-        <div className="Note3Icons">
-          <IconButton onClick={() => updateTrash(props.noteDetails.noteID)}>
-            <RestoreFromTrashOutlinedIcon />
+        <div className={classes.Note3Icons}>
+          <IconButton onClick={() => updateTrash(props.noteDetails.noteID)} size='small'>
+            <RestoreFromTrashOutlinedIcon fontSize="small"/>
           </IconButton>
-          <IconButton onClick={() => deleteForever(props.noteDetails.noteID)}>
-            <DeleteForeverOutlinedIcon />
+          <IconButton onClick={() => deleteForever(props.noteDetails.noteID)} size='small'>
+            <DeleteForeverOutlinedIcon fontSize="small"/>
           </IconButton>
         </div>
       </Paper>

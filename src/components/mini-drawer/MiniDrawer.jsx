@@ -19,7 +19,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
-const drawerWidth = 240;
+const drawerWidth = 170;
 
 const openedMixin = (theme) => ({
   border: 0,

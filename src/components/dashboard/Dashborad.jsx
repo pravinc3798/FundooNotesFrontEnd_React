@@ -31,7 +31,7 @@ export default function Dashborad() {
   return (
     <div>
       <NewAppBar />
-      <div>
+      <div style={{display:'flex'}}>
         <MiniDrawer />
 
         {MiniDrawerPane === "Notes" && (

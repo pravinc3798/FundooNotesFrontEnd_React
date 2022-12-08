@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./NoteStyles.css";
+import { useStyle } from "../Styling";
 
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -20,10 +20,13 @@ import {
 import ColorPopper from "../icon-components/ColorPopper";
 import NoteEditModal from "./NoteEditModal";
 import { ApiSensor } from "../../redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ArchiveNoteView(props) {
   const dispatch = useDispatch();
+  const classes = useStyle();
+  const MiniDrawerPane = useSelector((state) => state.MiniDrawerPane);
+  const leftCustom = !MiniDrawerPane ? "16vw" : "8vw";
 
   const [openClose, setOpenClose] = useState(false);
 
@@ -49,7 +52,7 @@ export default function ArchiveNoteView(props) {
   };
 
   return (
-    <div className="Note3Container">
+    <div className={classes.Note3Container} style={{ left: leftCustom }}>
       {openClose && (
         <NoteEditModal
           openModal={openClose}
@@ -58,29 +61,23 @@ export default function ArchiveNoteView(props) {
         />
       )}
       <Paper
+        className={classes.Note3Paper}
+        sx={{ bgcolor: props.noteDetails.color }}
         component="div"
-        sx={{
-          p: "2px 4px",
-          width: "18rem",
-          borderRadius: "10px",
-          color: "rgba(0,0,0,0.702)",
-          backgroundColor: props.noteDetails.color,
-        }}
       >
-        <div className="Note3Title">
+        <div className={classes.Note3Title}>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             fullWidth
             value={props.noteDetails.title}
             onClick={() => setOpenClose(true)}
           />
-          <IconButton>
-            <PushPinOutlinedIcon />
+          <IconButton size="small">
+            <PushPinOutlinedIcon fontSize="small"/>
           </IconButton>
         </div>
         <div
-          className="Note3Description"
-          style={{ height: "6rem", resize: "none", overflow: "hidden" }}
+          className={classes.Note3Description}
         >
           <InputBase
             sx={{ ml: 1, flex: 1, p: "2px 4px" }}
@@ -92,22 +89,22 @@ export default function ArchiveNoteView(props) {
             onClick={() => setOpenClose(true)}
           />
         </div>
-        <div className="Note3Icons">
-          <IconButton>
-            <PersonAddAltOutlinedIcon />
+        <div className={classes.Note3Icons}>
+          <IconButton size="small">
+            <PersonAddAltOutlinedIcon fontSize="small"/>
           </IconButton>
           <ColorPopper noteColor={updateColor} />
-          <IconButton>
-            <PhotoOutlinedIcon />
+          <IconButton size="small">
+            <PhotoOutlinedIcon fontSize="small"/>
           </IconButton>
           <IconButton onClick={() => updateArchive(props.noteDetails.noteID)}>
-            <UnarchiveOutlinedIcon />
+            <UnarchiveOutlinedIcon fontSize="small"/>
           </IconButton>
           <IconButton onClick={() => updateTrash(props.noteDetails.noteID)}>
-            <DeleteOutlineOutlinedIcon />
+            <DeleteOutlineOutlinedIcon fontSize="small"/>
           </IconButton>
-          <IconButton>
-            <MoreVertOutlinedIcon />
+          <IconButton size="small">
+            <MoreVertOutlinedIcon fontSize="small"/>
           </IconButton>
         </div>
       </Paper>

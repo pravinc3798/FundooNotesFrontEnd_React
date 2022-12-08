@@ -39,8 +39,8 @@ export default function ColorPopper(props) {
 
   return (
     <div>
-      <IconButton onClick={handleClick}>
-        <PaletteOutlinedIcon />
+      <IconButton onClick={handleClick} size='small' sx={{marginTop:'3px'}}>
+        <PaletteOutlinedIcon fontSize="small"/>
       </IconButton>
       <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 1400 }}>
         <Box

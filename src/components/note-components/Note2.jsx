@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NewNoteToggle } from "../../redux/Actions";
-import "./NoteStyles.css";
+import { useStyle } from "../Styling";
 
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -20,9 +20,12 @@ import RedoOutlinedIcon from "@mui/icons-material/RedoOutlined";
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
 import { addNote } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
+import { margin } from "@mui/system";
 
 export default function Note2(props) {
+  const classes = useStyle()
   const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
+  let marginCuston = MiniDrawerOpen ? "20vw" : "25vw";
   const dispatch = useDispatch();
 
   const [noteObj, setNoteObj] = useState({
@@ -58,20 +61,14 @@ export default function Note2(props) {
   };
 
   return (
-    <div className="Note2Container">
-      <Paper
+    <div className={classes.Note2Container} style={{marginLeft:marginCuston}}>
+      <Paper className={classes.Note2Paper}
         component="div"
         sx={{
-          p: "2px 4px",
-          width: "40rem",
-          borderRadius: "10px",
-          color: "rgba(0,0,0,0.702)",
-          borderColor: "#202124",
-          boxShadow: "0 0 5px #202124",
           background: noteObj.color,
         }}
       >
-        <div className="Note2Title">
+        <div className={classes.Note2Title}>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder="Title"
@@ -82,7 +79,7 @@ export default function Note2(props) {
             <PushPinOutlinedIcon />
           </IconButton>
         </div>
-        <div className="Note2Descripiton">
+        <div className={classes.Note2Descripiton}>
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder="Take a note..."
@@ -91,8 +88,8 @@ export default function Note2(props) {
             onChange={(e) => userInput("description", e.target.value)}
           />
         </div>
-        <div className="Note2IconButtons">
-          <div className="Note2Icons">
+        <div className={classes.Note2IconButtons}>
+          <div className={classes.Note2Icons}>
             <IconButton>
               <NotificationAddOutlinedIcon />
             </IconButton>
@@ -122,7 +119,7 @@ export default function Note2(props) {
               <RedoOutlinedIcon />
             </IconButton>
           </div>
-          <div className="Note2Button">
+          <div className={classes.Note2Button}>
             <Button
               variant="text"
               sx={{ color: "grey", textTransform: "none", fontWeight: "bold" }}
