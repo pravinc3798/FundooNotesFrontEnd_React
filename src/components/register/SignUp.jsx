@@ -164,7 +164,7 @@ export default function SignUp() {
               />
             </div>
             <div className="SUsignInNext">
-              <Button className="SUsignInButton" variant="text">
+              <Button className="SUsignInButton" variant="text" href="/">
                 Sign in instead
               </Button>
               <Button

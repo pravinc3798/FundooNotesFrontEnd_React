@@ -5,8 +5,12 @@ import { loginApi } from "../../services/UserServices";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { useNavigate } from "react-router";
 
 export default function SignIn() {
+
+  const navigate = useNavigate()
+
   const [inputModel, setInputModel] = useState({
     email: "",
     userPassword: "",
@@ -50,6 +54,7 @@ export default function SignIn() {
         .then((response) => {
           console.log(response);
           localStorage.setItem("token", response.data.data);
+          navigate("/dashboard")
         })
         .catch((error) => {
           console.log(error);
@@ -116,7 +121,7 @@ export default function SignIn() {
             <a href="">Forgot userPassword?</a>
           </div>
           <div className="SIfooter">
-            <a href="">Create Account</a>
+            <a href="/signup">Create Account</a>
             <button onClick={validateInput}>Login</button>
           </div>
         </div>
