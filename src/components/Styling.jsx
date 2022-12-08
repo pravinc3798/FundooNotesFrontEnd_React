@@ -2,9 +2,10 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyle = makeStyles({
   Note1Container: {
-    marginTop: "2rem",
+    marginTop: "6rem",
     width: "45vw",
     padding: "1px 1px",
+    marginBottom: '2rem'
   },
 
   Note1Paper: {
@@ -19,9 +20,10 @@ export const useStyle = makeStyles({
   },
 
   Note2Container: {
-    marginTop: "2rem",
+    marginTop: "6rem",
     width: "45vw",
     borderRadius: "12px",
+    marginBottom: '2rem'
   },
 
   Note2Paper: {
@@ -91,6 +93,7 @@ export const useStyle = makeStyles({
 export const DashboardUseStyle = makeStyles({
   DBContainer: {
     display: "flex",
+    width:'95vw'
   },
 
   DBNotes: {

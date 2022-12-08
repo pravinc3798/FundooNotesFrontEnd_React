@@ -27,7 +27,7 @@ export default function NewAppBar(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "white" }}>
+      <AppBar position="fixed" style={{ backgroundColor: "white", boxShadow:'none', border:'1px solid lightgray'}}>
         <Toolbar>
           <IconButton
             sx={{ mr: 2 }}
