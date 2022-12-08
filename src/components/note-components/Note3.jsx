@@ -66,12 +66,12 @@ export default function Note3(props) {
       )}
       <Paper
         className={classes.Note3Paper}
-        sx={{ bgcolor: props.noteDetails.color }}
+        sx={{ bgcolor: props.noteDetails.color, borderRadius: "10px" }}
         component="div"
       >
         <Box className={classes.Note3Title}>
           <InputBase
-            sx={{ ml: 1, flex: 1}}
+            sx={{ ml: 1, flex: 1 }}
             fullWidth
             value={props.noteDetails.title}
             onClick={() => setOpenClose(true)}
@@ -85,7 +85,7 @@ export default function Note3(props) {
           onClick={() => setOpenClose(true)}
         >
           <InputBase
-            sx={{ ml: 1, mr:1,flex: 1, p: "2px 4px" }}
+            sx={{ ml: 1, mr: 1, flex: 1, p: "2px 4px" }}
             fullWidth
             multiline
             rows={5}

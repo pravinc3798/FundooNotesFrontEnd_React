@@ -36,7 +36,7 @@ export default function Note5(props) {
     <div className={classes.Note3Container} style={{ left: leftCustom }}>
       <Paper
         className={classes.Note3Paper}
-        sx={{ bgcolor: props.noteDetails.color }}
+        sx={{ bgcolor: props.noteDetails.color, borderRadius: "10px" }}
         component="div"
       >
         <div className={classes.Note3Title}>
@@ -46,9 +46,7 @@ export default function Note5(props) {
             value={props.noteDetails.title}
           />
         </div>
-        <div
-          className={classes.Note3Description}
-        >
+        <div className={classes.Note3Description}>
           <InputBase
             sx={{ ml: 1, flex: 1, p: "2px 4px" }}
             fullWidth
@@ -59,11 +57,17 @@ export default function Note5(props) {
           />
         </div>
         <div className={classes.Note3Icons}>
-          <IconButton onClick={() => updateTrash(props.noteDetails.noteID)} size='small'>
-            <RestoreFromTrashOutlinedIcon fontSize="small"/>
+          <IconButton
+            onClick={() => updateTrash(props.noteDetails.noteID)}
+            size="small"
+          >
+            <RestoreFromTrashOutlinedIcon fontSize="small" />
           </IconButton>
-          <IconButton onClick={() => deleteForever(props.noteDetails.noteID)} size='small'>
-            <DeleteForeverOutlinedIcon fontSize="small"/>
+          <IconButton
+            onClick={() => deleteForever(props.noteDetails.noteID)}
+            size="small"
+          >
+            <DeleteForeverOutlinedIcon fontSize="small" />
           </IconButton>
         </div>
       </Paper>

@@ -14,14 +14,15 @@ import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
 export default function Note1(props) {
   const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
   const dispatch = useDispatch();
-  const classes = useStyle()
+  const classes = useStyle();
   let marginCuston = MiniDrawerOpen ? "20vw" : "25vw";
 
   return (
-    <div className={classes.Note1Container} style={{marginLeft:marginCuston}}>
-      <Paper className={classes.Note1Paper}
-        component="form"
-      >
+    <div
+      className={classes.Note1Container}
+      style={{ marginLeft: marginCuston }}
+    >
+      <Paper className={classes.Note1Paper} component="form">
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Take a note..."

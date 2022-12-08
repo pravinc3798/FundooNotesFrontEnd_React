@@ -33,7 +33,6 @@ export const useStyle = makeStyles({
     boxShadow: "0 0 5px #202124",
   },
 
-
   Note2Title: {
     display: "flex",
     alignItems: "center",
@@ -77,7 +76,7 @@ export const useStyle = makeStyles({
   },
 
   Note3Paper: {
-    p: "2px 4px",
+    padding: "4px 4px",
     width: "212px",
     borderRadius: "10px",
     color: "rgba(0,0,0,0.702)",
@@ -86,5 +85,23 @@ export const useStyle = makeStyles({
   Note3Icons: {
     display: "flex",
     justifyContent: "space-between",
+  },
+});
+
+export const DashboardUseStyle = makeStyles({
+  DBContainer: {
+    display: "flex",
+  },
+
+  DBNotes: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+
+  DBHeading: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "1.5rem",
+    marginLeft: "40vw",
   },
 });

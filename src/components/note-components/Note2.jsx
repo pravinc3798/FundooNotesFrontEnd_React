@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NewNoteToggle } from "../../redux/Actions";
+import { ApiSensor, NewNoteToggle } from "../../redux/Actions";
 import { useStyle } from "../Styling";
 
 import Paper from "@mui/material/Paper";
@@ -23,7 +23,7 @@ import ColorPopper from "../icon-components/ColorPopper";
 import { margin } from "@mui/system";
 
 export default function Note2(props) {
-  const classes = useStyle()
+  const classes = useStyle();
   const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
   let marginCuston = MiniDrawerOpen ? "20vw" : "25vw";
   const dispatch = useDispatch();
@@ -47,10 +47,11 @@ export default function Note2(props) {
       addNote(noteObj)
         .then((response) => {
           console.log(response);
-          //props.iniatedMove();
+          dispatch(ApiSensor());
         })
         .catch((error) => console.log(error));
     }
+    dispatch(NewNoteToggle());
   };
 
   const noteColor = (selectedColor) => {
@@ -61,8 +62,12 @@ export default function Note2(props) {
   };
 
   return (
-    <div className={classes.Note2Container} style={{marginLeft:marginCuston}}>
-      <Paper className={classes.Note2Paper}
+    <div
+      className={classes.Note2Container}
+      style={{ marginLeft: marginCuston }}
+    >
+      <Paper
+        className={classes.Note2Paper}
         component="div"
         sx={{
           background: noteObj.color,
@@ -123,10 +128,7 @@ export default function Note2(props) {
             <Button
               variant="text"
               sx={{ color: "grey", textTransform: "none", fontWeight: "bold" }}
-              onClick={() => {
-                dispatch(NewNoteToggle());
-                saveNote();
-              }}
+              onClick={() => saveNote()}
             >
               Close
             </Button>

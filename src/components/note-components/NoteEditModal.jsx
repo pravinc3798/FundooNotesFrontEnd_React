@@ -1,5 +1,4 @@
 import React from "react";
-import "./NoteStyles.css";
 
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
@@ -25,9 +24,11 @@ import {
 import ColorPopper from "../icon-components/ColorPopper";
 import { useDispatch } from "react-redux";
 import { ApiSensor } from "../../redux/Actions";
+import { useStyle } from "../Styling";
 
 export default function NoteEditModal(props) {
   const dispatch = useDispatch();
+  const classes = useStyle();
 
   const styleModal = {
     position: "absolute",
@@ -74,10 +75,10 @@ export default function NoteEditModal(props) {
   };
 
   return (
-    <div className="Note3Container">
+    <div className={classes.Note3Container}>
       <Modal open={props.openModal}>
         <Box component="div" sx={styleModal}>
-          <div className="Note3Title">
+          <div className={classes.Note3Title}>
             <InputBase
               sx={{ ml: 1, flex: 1, fontSize: "18px", fontWeight: "bold" }}
               fullWidth
@@ -90,7 +91,7 @@ export default function NoteEditModal(props) {
               <CloseOutlinedIcon />
             </IconButton>
           </div>
-          <div className="Note3Description">
+          <div className={classes.Note3Description}>
             <InputBase
               sx={{ ml: 1, flex: 1, p: "2px 4px", marginBottom: "0rem" }}
               fullWidth
@@ -104,7 +105,7 @@ export default function NoteEditModal(props) {
           <p style={{ textAlign: "right", fontSize: "0.8rem", color: "black" }}>
             Edited {new Date(props.pnoteDetails.edited).toLocaleString()}
           </p>
-          <div className="Note3Icons">
+          <div className={classes.Note3Icons}>
             <IconButton>
               <PersonAddAltOutlinedIcon />
             </IconButton>

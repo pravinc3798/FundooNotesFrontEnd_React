@@ -8,8 +8,10 @@ import Note3 from "../note-components/Note3";
 import ArchiveNoteView from "../note-components/ArchiveNoteView";
 import TrashNoteView from "../note-components/TrashNoteView";
 import MiniDrawer from "../mini-drawer/MiniDrawer";
+import { DashboardUseStyle } from "../Styling";
 
 export default function Dashborad() {
+  const classes = DashboardUseStyle();
   const NewNoteTogglePosition = useSelector(
     (state) => state.NewNoteTogglePosition
   );
@@ -31,18 +33,13 @@ export default function Dashborad() {
   return (
     <div>
       <NewAppBar />
-      <div style={{display:'flex'}}>
+      <div className={classes.DBContainer}>
         <MiniDrawer />
 
         {MiniDrawerPane === "Notes" && (
           <div>
             {NewNoteTogglePosition ? <Note2 /> : <Note1 />}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-              }}
-            >
+            <div className={classes.DBNotes}>
               {noteList
                 .filter((noteObj) => !noteObj.archive && !noteObj.trash)
                 .map((noteObj) => (
@@ -53,21 +50,10 @@ export default function Dashborad() {
         )}
         {MiniDrawerPane === "Archive" && (
           <div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "4rem",
-              }}
-            >
+            <div className={classes.DBHeading}>
               <h3>Archieved Notes</h3>
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-              }}
-            >
+            <div className={classes.DBNotes}>
               {noteList
                 .filter((noteObj) => noteObj.archive && !noteObj.trash)
                 .map((noteObj) => (
@@ -78,21 +64,10 @@ export default function Dashborad() {
         )}
         {MiniDrawerPane === "Bin" && (
           <div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "4rem",
-              }}
-            >
+            <div className={classes.DBHeading}>
               <h3>Trashed Notes</h3>
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-              }}
-            >
+            <div className={classes.DBNotes}>
               {noteList
                 .filter((noteObj) => noteObj.trash)
                 .map((noteObj) => (

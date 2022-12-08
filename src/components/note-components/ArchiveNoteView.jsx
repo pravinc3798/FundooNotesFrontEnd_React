@@ -62,7 +62,7 @@ export default function ArchiveNoteView(props) {
       )}
       <Paper
         className={classes.Note3Paper}
-        sx={{ bgcolor: props.noteDetails.color }}
+        sx={{ bgcolor: props.noteDetails.color, borderRadius: "10px" }}
         component="div"
       >
         <div className={classes.Note3Title}>
@@ -73,12 +73,10 @@ export default function ArchiveNoteView(props) {
             onClick={() => setOpenClose(true)}
           />
           <IconButton size="small">
-            <PushPinOutlinedIcon fontSize="small"/>
+            <PushPinOutlinedIcon fontSize="small" />
           </IconButton>
         </div>
-        <div
-          className={classes.Note3Description}
-        >
+        <div className={classes.Note3Description}>
           <InputBase
             sx={{ ml: 1, flex: 1, p: "2px 4px" }}
             fullWidth
@@ -91,20 +89,20 @@ export default function ArchiveNoteView(props) {
         </div>
         <div className={classes.Note3Icons}>
           <IconButton size="small">
-            <PersonAddAltOutlinedIcon fontSize="small"/>
+            <PersonAddAltOutlinedIcon fontSize="small" />
           </IconButton>
           <ColorPopper noteColor={updateColor} />
           <IconButton size="small">
-            <PhotoOutlinedIcon fontSize="small"/>
+            <PhotoOutlinedIcon fontSize="small" />
           </IconButton>
           <IconButton onClick={() => updateArchive(props.noteDetails.noteID)}>
-            <UnarchiveOutlinedIcon fontSize="small"/>
+            <UnarchiveOutlinedIcon fontSize="small" />
           </IconButton>
           <IconButton onClick={() => updateTrash(props.noteDetails.noteID)}>
-            <DeleteOutlineOutlinedIcon fontSize="small"/>
+            <DeleteOutlineOutlinedIcon fontSize="small" />
           </IconButton>
           <IconButton size="small">
-            <MoreVertOutlinedIcon fontSize="small"/>
+            <MoreVertOutlinedIcon fontSize="small" />
           </IconButton>
         </div>
       </Paper>
