@@ -19,8 +19,11 @@ import {
 } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
 import NoteEditModal from "./NoteEditModal";
+import { ApiSensor } from "../../redux/Actions";
+import { useDispatch } from "react-redux";
 
 export default function ArchiveNoteView(props) {
+  const dispatch = useDispatch()
 
   const [openClose, setOpenClose] = useState(false);
 
@@ -28,12 +31,14 @@ export default function ArchiveNoteView(props) {
     archiveNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   const updateTrash = (id) => {
     trashNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   const updateColor = (selectedColor) => {

@@ -16,3 +16,9 @@ export const MiniDrawerOpenClose = () => {
     type: "DrawerOpen",
   };
 };
+
+export const ApiSensor = () => {
+  return {
+    type : 'ApiCall'
+  }
+}

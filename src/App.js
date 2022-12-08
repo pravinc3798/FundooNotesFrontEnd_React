@@ -6,9 +6,9 @@ import { store } from "./redux/Store";
 
 function App() {
   return (
-    // <SignIn/>
     // <SignUp/>
     <Provider store={store}>
+      {/* <SignIn/> */}
       <Dashborad/>
     </Provider>
   );

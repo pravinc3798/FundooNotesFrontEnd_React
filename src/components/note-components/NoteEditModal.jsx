@@ -23,8 +23,12 @@ import {
   trashNote,
 } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
+import { useDispatch } from "react-redux";
+import { ApiSensor } from "../../redux/Actions";
 
 export default function NoteEditModal(props) {
+
+  const dispatch = useDispatch()
 
   const styleModal = {
     position: "absolute",
@@ -46,12 +50,14 @@ export default function NoteEditModal(props) {
     archiveNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   const updateTrash = (id) => {
     trashNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   const updateColor = (selectedColor) => {
@@ -65,6 +71,7 @@ export default function NoteEditModal(props) {
     editNote(id, noteObject)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   return (

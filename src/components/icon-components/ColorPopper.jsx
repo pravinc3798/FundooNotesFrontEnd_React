@@ -3,8 +3,11 @@ import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import IconButton from "@mui/material/IconButton";
+import { useDispatch } from "react-redux";
+import { ApiSensor } from "../../redux/Actions";
 
 export default function ColorPopper(props) {
+  const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const colors = [
@@ -28,6 +31,7 @@ export default function ColorPopper(props) {
 
   const selectColor = (optedColor) => {
     props.noteColor(optedColor);
+    dispatch(ApiSensor())
   };
 
   const open = Boolean(anchorEl);

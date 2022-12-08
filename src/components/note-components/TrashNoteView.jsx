@@ -9,18 +9,25 @@ import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined
 import RestoreFromTrashOutlinedIcon from "@mui/icons-material/RestoreFromTrashOutlined";
 
 import { trashNote, deleteNote } from "../../services/DataServices";
+import { ApiSensor } from "../../redux/Actions";
+import { useDispatch } from "react-redux";
 
 export default function Note5(props) {
+
+  const dispatch = useDispatch()
+  
   const updateTrash = (id) => {
     trashNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   const deleteForever = (id) => {
     deleteNote(id)
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+      dispatch(ApiSensor())
   };
 
   return (

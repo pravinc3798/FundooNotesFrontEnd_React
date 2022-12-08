@@ -2,6 +2,7 @@ const initialState = {
   NewNoteTogglePosition: false,
   MiniDrawerPane: "Notes",
   MiniDrawerOpen: false,
+  ApiCallSense : false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         MiniDrawerOpen: !state.MiniDrawerOpen,
       };
+
+    case "ApiCall":
+      return {
+        ...state,
+        ApiCallSense: !state.ApiCallSense
+      }
 
     default:
       return state;
