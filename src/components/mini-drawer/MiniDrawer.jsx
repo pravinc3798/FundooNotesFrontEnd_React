@@ -1,6 +1,9 @@
 import * as React from "react";
 
 import { styled, useTheme } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { MiniDrawerPaneSelection } from "../../redux/Actions";
+
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -60,17 +63,17 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer(props) {
+
+  const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
+  const dispatch = useDispatch();
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
-  const selectPane = (selectedOption) => {
-    props.paneSelection(selectedOption);
-  };
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={props.drawerPosition}>
+      <Drawer variant="permanent" open={MiniDrawerOpen}>
         <List>
           {[
             { name: "Notes", icon: <LightbulbOutlinedIcon /> },
@@ -83,7 +86,7 @@ export default function MiniDrawer(props) {
               key={index}
               disablePadding
               sx={{ display: "block", marginLeft: "1.65rem" }}
-              onClick={() => selectPane(item.name)}
+              onClick={() => dispatch(MiniDrawerPaneSelection(item.name))}
             >
               <ListItemButton
                 sx={{

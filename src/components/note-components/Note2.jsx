@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NewNoteToggle } from "../../redux/Actions";
 import "./NoteStyles.css";
 
 import Paper from "@mui/material/Paper";
@@ -20,6 +22,10 @@ import { addNote } from "../../services/DataServices";
 import ColorPopper from "../icon-components/ColorPopper";
 
 export default function Note2(props) {
+
+  const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
+  const dispatch = useDispatch();
+
   const [noteObj, setNoteObj] = useState({
     title: "",
     description: "",
@@ -34,12 +40,13 @@ export default function Note2(props) {
     });
   };
 
-  const updateToggle = () => {
-    props.toggle();
-
+  const saveNote = () => {
     if (noteObj.title !== "" || noteObj.description !== "") {
       addNote(noteObj)
-        .then((response) => console.log(response))
+        .then((response) => {
+          console.log(response);
+          //props.iniatedMove();
+        })
         .catch((error) => console.log(error));
     }
   };
@@ -120,7 +127,9 @@ export default function Note2(props) {
             <Button
               variant="text"
               sx={{ color: "grey", textTransform: "none", fontWeight: "bold" }}
-              onClick={updateToggle}
+              onClick={() => {dispatch(NewNoteToggle())
+                saveNote()
+              }}
             >
               Close
             </Button>

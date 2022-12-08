@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { getNotes } from "../../services/DataServices";
-import AppBar from "../note-components/AppBar";
+import NewAppBar from "../note-components/AppBar";
 import Note1 from "../note-components/Note1";
 import Note2 from "../note-components/Note2";
 import Note3 from "../note-components/Note3";
@@ -9,16 +10,11 @@ import TrashNoteView from "../note-components/TrashNoteView";
 import MiniDrawer from "../mini-drawer/MiniDrawer";
 
 export default function Dashborad() {
-  const [toggle, setToggle] = useState(false);
+  const NewNoteTogglePosition = useSelector(
+    (state) => state.NewNoteTogglePosition
+  );
+  const MiniDrawerPane = useSelector((state) => state.MiniDrawerPane);
   const [noteList, setNoteList] = useState([]);
-  const [drawerSwitch, setDrawerSwitch] = useState(false);
-  const [pane, setPane] = useState("Notes");
-
-  const updateToggle = () => setToggle(!toggle);
-  const updateDrawer = () => setDrawerSwitch(!drawerSwitch);
-  const drawerPane = (selectedPane) => {
-    setPane(selectedPane);
-  };
 
   useEffect(() => {
     getNotes()
@@ -28,78 +24,82 @@ export default function Dashborad() {
         console.log(noteList);
       })
       .catch((error) => console.log(error));
-  }, [pane]);
+  }, [MiniDrawerPane]);
 
   return (
     <div>
-      <AppBar updateDrawer={updateDrawer} heading={pane} />
-      <MiniDrawer drawerPosition={drawerSwitch} paneSelection={drawerPane} />
+      <NewAppBar />
+      <div>
+        <MiniDrawer />
 
-      {pane === "Notes" && (
-        <div>
-          {toggle ? (
-            <Note2 toggle={updateToggle} />
-          ) : (
-            <Note1 toggle={updateToggle} />
-          )}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              height: "auto",
-              width: "75vw",
-            }}
-          >
-            {noteList
-              .filter((noteObj) => !noteObj.archive && !noteObj.trash)
-              .map((noteObj) => (
-                <Note3 key={noteObj.noteID} noteDetails={noteObj} />
-              ))}
+        {MiniDrawerPane === "Notes" && (
+          <div>
+            {NewNoteTogglePosition ? <Note2 /> : <Note1 />}
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              {noteList
+                .filter((noteObj) => !noteObj.archive && !noteObj.trash)
+                .map((noteObj) => (
+                  <Note3 key={noteObj.noteID} noteDetails={noteObj} />
+                ))}
+            </div>
           </div>
-        </div>
-      )}
-      {pane === "Archive" && (
-        <div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>Archieved Notes</h3>
+        )}
+        {MiniDrawerPane === "Archive" && (
+          <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "4rem",
+              }}
+            >
+              <h3>Archieved Notes</h3>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              {noteList
+                .filter((noteObj) => noteObj.archive && !noteObj.trash)
+                .map((noteObj) => (
+                  <ArchiveNoteView key={noteObj.noteID} noteDetails={noteObj} />
+                ))}
+            </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              height: "auto",
-              width: "75vw",
-            }}
-          >
-            {noteList
-              .filter((noteObj) => noteObj.archive && !noteObj.trash)
-              .map((noteObj) => (
-                <ArchiveNoteView key={noteObj.noteID} noteDetails={noteObj} />
-              ))}
+        )}
+        {MiniDrawerPane === "Bin" && (
+          <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "4rem",
+              }}
+            >
+              <h3>Trashed Notes</h3>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              {noteList
+                .filter((noteObj) => noteObj.trash)
+                .map((noteObj) => (
+                  <TrashNoteView key={noteObj.noteID} noteDetails={noteObj} />
+                ))}
+            </div>
           </div>
-        </div>
-      )}
-      {pane === "Bin" && (
-        <div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>Trashed Notes</h3>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              height: "auto",
-              width: "75vw",
-            }}
-          >
-            {noteList
-              .filter((noteObj) => noteObj.trash)
-              .map((noteObj) => (
-                <TrashNoteView key={noteObj.noteID} noteDetails={noteObj} />
-              ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

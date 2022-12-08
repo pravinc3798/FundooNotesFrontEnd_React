@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NewNoteToggle } from "../../redux/Actions";
 import "./NoteStyles.css";
 
 import Paper from "@mui/material/Paper";
@@ -10,7 +12,8 @@ import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
 
 export default function Note1(props) {
-  const updateToggle = () => props.toggle();
+  const MiniDrawerOpen = useSelector((state) => state.MiniDrawerOpen);
+  const dispatch = useDispatch();
 
   return (
     <div className="Note1Container">
@@ -30,7 +33,7 @@ export default function Note1(props) {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Take a note..."
-          onClick={updateToggle}
+          onClick={() => dispatch(NewNoteToggle())}
         />
         <IconButton>
           <CheckBoxOutlinedIcon />
