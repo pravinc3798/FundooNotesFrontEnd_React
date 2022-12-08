@@ -75,7 +75,7 @@ export default function Note2(props) {
       >
         <div className={classes.Note2Title}>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{ ml: 1, flex: 1, mr:1, p:1 }}
             placeholder="Title"
             fullWidth
             onChange={(e) => userInput("title", e.target.value)}
@@ -86,7 +86,7 @@ export default function Note2(props) {
         </div>
         <div className={classes.Note2Descripiton}>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{ ml: 1, flex: 1, mr:1, p:1 }}
             placeholder="Take a note..."
             fullWidth
             multiline
